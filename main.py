@@ -1,4 +1,6 @@
 # TASK 4
+from selenium import webdriver
+
 import data
 import helpers
 class TestUrbanRoutes:
@@ -10,6 +12,17 @@ class TestUrbanRoutes:
         else:
             print("Cannot connect to Urban Routes. Check the server is on and still running")
 
+    @classmethod
+    def setup_class(cls):
+        # do not modify - we need additional logging enabled in order to retrieve phone confirmation code
+        from selenium.webdriver import DesiredCapabilities
+        if helpers.is_url_reachable(data.URBAN_ROUTES_URL):
+            print("Connected to the Urban Routes server")
+        else:
+            print("Cannot connect to Urban Routes. Check the server is on and still running")
+        capabilities = DesiredCapabilities.CHROME
+        capabilities["goog:loggingPrefs"] = {'performance': 'ALL'}
+        cls.driver = webdriver.Chrome()
 
 # TASK 3
 
@@ -40,11 +53,14 @@ class TestUrbanRoutes:
  # TASK 5
     def test_order_2_ice_creams(self):
         for ice_creams in range(2):
-            # Add in S8
+            # Add in S8ß
             print("function created for order 2 ice creams")
             pass
     def test_car_search_model_appears(self):
         # Add in S8
         print('function created for car search model appears')
         pass
+    @classmethod
+    def teardown_class(cls):
+        cls.driver.quit()
 
