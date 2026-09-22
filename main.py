@@ -1,5 +1,4 @@
 # main.py
-import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,10 +6,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
+import helpers
+from pages import UrbanRoutesPage
 import data
 from helpers import retrieve_phone_code  # provided with the project
-
-
 class UrbanRoutesPage:
     # ---- Locators -------------------------------------------------------
     FROM_FIELD = (By.ID, "from")
@@ -100,7 +99,7 @@ class UrbanRoutesPage:
         self._clickable(self.PHONE_NEXT_BUTTON).click()
 
     def confirm_sms_code(self):
-        code = retrieve_phone_code(self.driver)
+        code = helpers.retrieve_phone_code(self.driver)
         self._visible(self.SMS_CODE_INPUT).send_keys(code)
         self._clickable(self.SMS_CONFIRM_BUTTON).click()
 

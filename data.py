@@ -1,7 +1,7 @@
 # data.py
 # Update urban_routes_url with the current server URL before each test run.
 
-urban_routes_url = "https://cnt-9aba866c-5629-4799-bbcc-a23bab7b8a9d.containerhub.tripleten-services.com"
+urban_routes_url = "https://cnt-381a7e99-9100-44a5-8658-384e0d48c09f.containerhub.tripleten-services.com"
 
 address_from = "East 2nd Street, 601"
 address_to = "1300 1st St"
